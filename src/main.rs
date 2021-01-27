@@ -1,21 +1,14 @@
 use dotenv::dotenv;
 use serenity::{
     async_trait,
-    framework::standard::{
-        macros::group,
-        StandardFramework,
-    },
+    framework::standard::{macros::group, StandardFramework},
     http::Http,
-    model::{
-        gateway::Ready,
-    },
+    model::gateway::Ready,
 };
-use std::{
-    collections::HashSet,
-    env,
-};
+use std::{collections::HashSet, env};
 
 use serenity::prelude::*;
+use serenity::model::prelude::*;
 
 mod commands;
 use commands::*;
@@ -25,13 +18,15 @@ struct Handler;
 
 #[async_trait]
 impl EventHandler for Handler {
-    async fn ready(&self, _: Context, ready: Ready) {
+    async fn ready(&self, ctx: Context, ready: Ready) {
         println!("{} is connected!", ready.user.name);
+
+        ctx.set_activity(Activity::playing("vibes :))")).await;
     }
 }
 
 #[group]
-#[commands(about)]
+#[commands(about, run)]
 struct General;
 
 #[tokio::main]
@@ -72,6 +67,7 @@ async fn main() {
         })
         .unrecognised_command(hooks::unknown_command)
         .on_dispatch_error(hooks::dispatch_error)
+        .help(&MY_HELP)
         .group(&GENERAL_GROUP);
 
     let mut client = Client::builder(&token)

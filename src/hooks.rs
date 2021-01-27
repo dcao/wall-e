@@ -1,5 +1,8 @@
 use serenity::model::prelude::*;
-use serenity::{framework::standard::{DispatchError, macros::hook}, prelude::*};
+use serenity::{
+    framework::standard::{macros::hook, DispatchError},
+    prelude::*,
+};
 
 #[hook]
 pub async fn unknown_command(_ctx: &Context, _msg: &Message, unknown_command_name: &str) {

@@ -1,0 +1,16 @@
+[package]
+name = "wall-e"
+version = "0.1.0"
+authors = ["David Cao <david@cao.sh>"]
+edition = "2018"
+
+[dependencies]
+dotenv = "0.15"
+
+[dependencies.serenity]
+version = "0.10"
+features = ["framework", "standard_framework", "rustls_backend"]
+
+[dependencies.tokio]
+version = "1.0"
+features = ["macros", "rt-multi-thread"]

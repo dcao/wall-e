@@ -8,7 +8,6 @@ in
     buildInputs = [
       z3
       rust-analyzer
-      # to use a specific nighly:
-      (nixpkgs.rust-bin.fromRustupToolchainFile ./rust-toolchain)
+      (nixpkgs.rust-bin.stable)
     ];
   }

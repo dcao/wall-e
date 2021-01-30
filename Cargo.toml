@@ -6,10 +6,12 @@ edition = "2018"
 
 [dependencies]
 dotenv = "0.15"
+lipsum = "0.7"
+rand = { version = "0.7", features = ["small_rng"] }
 
 [dependencies.serenity]
 version = "0.10"
-features = ["framework", "standard_framework", "rustls_backend"]
+features = ["framework", "standard_framework", "rustls_backend", "collector"]
 
 [dependencies.tokio]
 version = "1.0"

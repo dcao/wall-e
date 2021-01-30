@@ -7,8 +7,8 @@ use serenity::{
 };
 use std::{collections::HashSet, env};
 
-use serenity::prelude::*;
 use serenity::model::prelude::*;
+use serenity::prelude::*;
 
 mod commands;
 use commands::*;
@@ -26,7 +26,7 @@ impl EventHandler for Handler {
 }
 
 #[group]
-#[commands(about, run)]
+#[commands(about, run, typing_test)]
 struct General;
 
 #[tokio::main]
